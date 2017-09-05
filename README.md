@@ -2,6 +2,9 @@
 
 Installs libvips on Ubuntu 14.04 as base image.
 
+This modified version builds openslide from github source and then builds libvips from source mostly following [this procedure](https://github.com/DigitalSlideArchive/digital_slide_archive/wiki/VIPS-and-OpenSlide-Installation).
+
+This dockerfile can then be used to run libvips with OpenSlide directly from the command-line (see cookbook below for examples):
 
 ## Supported tags
 
@@ -20,6 +23,13 @@ Download the image using:
 $ docker pull marcbachmann/libvips
 # .... pulling down image
 ```
+
+## Useful resources
+
+* [OpenSlide and VIPS](https://github.com/openslide/openslide/wiki/OpenSlideAndVIPS)
+* [OpenSlide on Aperio format](http://openslide.org/formats/aperio/)
+* [libvips issue about checking if OpenSlide is working](https://github.com/jcupitt/libvips/issues/127)
+* [building libvips + openslide](https://github.com/DigitalSlideArchive/digital_slide_archive/wiki/VIPS-and-OpenSlide-Installation)
 
 # Cookbook for important commands
 
