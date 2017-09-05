@@ -53,10 +53,11 @@ sudo docker run -e OPENSLIDE_DEBUG=detection -e G_MESSAGES_DEBUG=VIPS -v ${PWD}:
 
 [dzsave documentation](https://jcupitt.github.io/libvips/API/current/Making-image-pyramids.md.html)
 
-In this command, we have enabled progress reporting, we are using a .zip extension with dzsave to indicate we want a zip file out the other end instead of just a set of directories (because a ton of files get created and we don't want to unpack this until the absolute last second).
+In this command, we have enabled progress reporting.  We are making sure that the input path AND the output path includes /home as otherwise the resulting file will not get saved on the local system.
 
 ```bash
-sudo docker run -e OPENSLIDE_DEBUG=detection -e G_MESSAGES_DEBUG=VIPS -v ${PWD}:/home metacell/libvips vips --vips-progress dzsave /home/HM_0597_Myelin_FLIPPED\ HORIZONTALLY.tiff /home/HM_0597_Myelin_FLIPPED\ HORIZONTALLY.zip
+sudo docker run -e OPENSLIDE_DEBUG=detection -e G_MESSAGES_DEBUG=VIPS -v ${PWD}:/home metacell/libvips vips --vips-progress dzsave /home/HM_0597_Myelin_FLIPPED\ HORIZONTALLY.tiff /home/HM_0597_Myelin_FLIPPED_HORIZONTALLY_DZ_tif
+
 ```
 
 
