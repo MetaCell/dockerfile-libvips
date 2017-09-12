@@ -60,6 +60,12 @@ sudo docker run -e OPENSLIDE_DEBUG=detection -e G_MESSAGES_DEBUG=VIPS -v ${PWD}:
 
 ```
 
+## Coverting TIFs to PNGs (using ImageMagic & a different container)
+
+```bash
+sudo docker run -v /home/dockerx/test2/PEELED\ FIXED:/images --rm -it v4tech/imagemagick convert -monitor /images/HM\ BRAIN\ PEELED\ CEREBELLUM\ AND\ OCCIPTAL\ RULER.TIF /images/HM\ BRAIN\ PEELED\ CEREBELLUM\ AND\ OCCIPTAL\ RULER.png
+```
+
 
 ## License
 
