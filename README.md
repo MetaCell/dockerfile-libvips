@@ -40,13 +40,13 @@ NOTE: we have to map the volume into the container and prepend the path with '/h
 ```bash
 #Grab a small test SVS from the OpenSlide site
 wget http://openslide.cs.cmu.edu/download/openslide-testdata/Aperio/CMU-1-Small-Region.svs
-sudo docker run -e OPENSLIDE_DEBUG=detection -e G_MESSAGES_DEBUG=VIPS -v ${PWD}:/home metacell/libvips vips openslideload --associated thumbnail /home/HM_0597_Myelin_TO\ BE\ FLIPPED\ HORIZONTALLY.svs test
+sudo docker run --rm -e OPENSLIDE_DEBUG=detection -e G_MESSAGES_DEBUG=VIPS -v ${PWD}:/home metacell/libvips vips openslideload --associated thumbnail /home/HM_0597_Myelin_TO\ BE\ FLIPPED\ HORIZONTALLY.svs test
 ```
 
 ## flip
 
 ```bash
-sudo docker run -e OPENSLIDE_DEBUG=detection -e G_MESSAGES_DEBUG=VIPS -v ${PWD}:/home metacell/libvips vips --vips-progress flip /home/HM_0597_Myelin_TO\ BE\ FLIPPED\ HORIZONTALLY.svs /home/HM_0597_Myelin_FLIPPED\ HORIZONTALLY.tiff horizontal
+sudo docker run --rm -e OPENSLIDE_DEBUG=detection -e G_MESSAGES_DEBUG=VIPS -v ${PWD}:/home metacell/libvips vips --vips-progress flip /home/HM_0597_Myelin_TO\ BE\ FLIPPED\ HORIZONTALLY.svs /home/HM_0597_Myelin_FLIPPED\ HORIZONTALLY.tiff horizontal
 ```
 
 ## Deep Zoom
@@ -56,11 +56,11 @@ sudo docker run -e OPENSLIDE_DEBUG=detection -e G_MESSAGES_DEBUG=VIPS -v ${PWD}:
 In this command, we have enabled progress reporting.  We are making sure that the input path AND the output path includes /home as otherwise the resulting file will not get saved on the local system.
 
 ```bash
-sudo docker run -e OPENSLIDE_DEBUG=detection -e G_MESSAGES_DEBUG=VIPS -v ${PWD}:/home metacell/libvips vips --vips-progress dzsave /home/HM_0597_Myelin_FLIPPED\ HORIZONTALLY.tiff /home/HM_0597_Myelin_FLIPPED_HORIZONTALLY_DZ_tif
+sudo docker run --rm -e OPENSLIDE_DEBUG=detection -e G_MESSAGES_DEBUG=VIPS -v ${PWD}:/home metacell/libvips vips --vips-progress dzsave /home/HM_0597_Myelin_FLIPPED\ HORIZONTALLY.tiff /home/HM_0597_Myelin_FLIPPED_HORIZONTALLY_DZ_tif
 
 ```
 
-## Coverting TIFs to PNGs (using ImageMagic & a different container)
+## Coverting TIFs to PNGs (using ImageMagik & a different container)
 
 ```bash
 sudo docker run -v /home/dockerx/test2/PEELED\ FIXED:/images --rm -it v4tech/imagemagick convert -monitor /images/HM\ BRAIN\ PEELED\ CEREBELLUM\ AND\ OCCIPTAL\ RULER.TIF /images/HM\ BRAIN\ PEELED\ CEREBELLUM\ AND\ OCCIPTAL\ RULER.png
